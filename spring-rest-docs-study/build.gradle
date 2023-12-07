@@ -27,6 +27,7 @@ ext {
     set('snippetsDir', file("build/generated-snippets"))
 }
 
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
@@ -48,21 +49,16 @@ tasks.named('asciidoctor') {
     inputs.dir snippetsDir
     configurations 'asciidoctorExt'
 
-    sources {
+    sources { // index.adoc 파일만 html파일로 변환
         include '**/index.adoc'
     }
-    baseDirFollowsSourceFile()
+    baseDirFollowsSourceFile() // index.adoc 파일의 경로와 같은 경로로 html파일 생성
     dependsOn test
 }
 
-
-task copyDocs(type: Copy) {
+bootJar {
     dependsOn asciidoctor
-
-    from file("${asciidoctor.outputDir}")
-    into file("src/main/resources/static/docs")
-}
-
-build {
-    dependsOn copyDocs
+    from ("${asciidoctor.outputDir}") { //jar 파일 생성 전, 생성된 API 문서를 jar 파일에 포함
+        into 'static/docs'
+    }
 }
