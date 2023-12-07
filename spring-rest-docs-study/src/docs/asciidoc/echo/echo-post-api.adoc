@@ -1,0 +1,10 @@
+[[echo-post-api]]
+== Echo Post API
+
+=== Http Request
+include::{snippets}/echo-post/http-request.adoc[]
+include::{snippets}/echo-post/request-fields.adoc[]
+
+=== Http Response
+include::{snippets}/echo-post/http-response.adoc[]
+include::{snippets}/echo-post/response-fields.adoc[]

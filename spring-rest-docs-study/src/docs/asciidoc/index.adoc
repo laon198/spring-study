@@ -1,0 +1,8 @@
+= Spring-rest-docs Study
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+
+include::echo/echo-post-api.adoc[]
